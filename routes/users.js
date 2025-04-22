@@ -10,8 +10,15 @@ router.get('/', function(req, res, next) {
 });
 
 router.get("/internships", [HasPositivePages, HasNumericPages], async function(req, res, next) {
-  const records = await Pagination("internships", req);
+  let records;
+  try {
+    records = await Pagination("internships", req);
+  } catch(e) {
+    console.log(e)
+  }
   res.json(records);
 });
+
+
 
 module.exports = router;

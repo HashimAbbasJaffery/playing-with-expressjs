@@ -7,9 +7,6 @@ function HasNumericPages(req, res, next) {
     if(typeof parseInt(offset) != "number") {
         next(createError(404, "Not Found"))
     }
-    if(isNaN(offset)) {
-        next(createError(404, "Not Found!"));
-    }
 
     next();
 };
